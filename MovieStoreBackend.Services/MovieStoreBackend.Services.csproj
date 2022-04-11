@@ -1,0 +1,14 @@
+<Project Sdk="Microsoft.NET.Sdk">
+
+  <PropertyGroup>
+    <TargetFramework>net6.0</TargetFramework>
+    <ImplicitUsings>enable</ImplicitUsings>
+    <Nullable>enable</Nullable>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <ProjectReference Include="..\MovieStoreBackend.DataAccess.EFCore\MovieStoreBackend.DataAccess.EFCore.csproj" />
+    <ProjectReference Include="..\MovieStoreBackend.Services.Infrastructure\MovieStoreBackend.Services.Infrastructure.csproj" />
+  </ItemGroup>
+
+</Project>
