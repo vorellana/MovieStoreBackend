@@ -2,12 +2,12 @@
 
 ### Desarrollo de una Aplicación API REST a cerca de un Sistema de Compra y Renta de Películas.
 
-![alt text](https://github.com/vorellana/MovieStoreBackend/blob/main/resources/backend-1.png?raw=true)
+![alt text](https://github.com/vorellana/MovieStoreBackend/blob/master/resources/backend-1.png?raw=true)
 
 ### La aplicación se encuentra desplegada en el servicio **Azure** y se puede ver uno de sus endpoints (lista de películas):
 ### https://moviestorebackend.azurewebsites.net/api/Movies
 
-![alt text](https://github.com/vorellana/MovieStoreBackend/blob/main/resources/backend-2.png?raw=true)
+![alt text](https://github.com/vorellana/MovieStoreBackend/blob/master/resources/backend-2.png?raw=true)
 
 ## 1. Características
 * La solución contiene varios proyectos para un mayor orden y mantenibilidad del código.
@@ -21,11 +21,11 @@
 
 ## 2. Base de datos
 ### Diagrama entidad-relación
-![alt text](https://github.com/vorellana/MovieStoreBackend/blob/main/resources/backend-3.png?raw=true)
+![alt text](https://github.com/vorellana/MovieStoreBackend/blob/master/resources/backend-3.png?raw=true)
 ## 3. Estructura de carpetas y proyectos.
 * Proyecto Entities: Contiene el código de los módelos de Base de Datos.
 * Proyecto Web API: Contiene los controllers que se encargan de exponer los endpoints.
-![alt text](https://github.com/vorellana/MovieStoreBackend/blob/main/resources/backend-4.png?raw=true)
+![alt text](https://github.com/vorellana/MovieStoreBackend/blob/master/resources/backend-4.png?raw=true)
 ## 2. Tecnologías de desarrollo
 
 Para el presente proyecto se utilizarón las siguientes tecnologías como librerías, frameworks, servicios en la nube, herramientas de despliegue entre otros.
