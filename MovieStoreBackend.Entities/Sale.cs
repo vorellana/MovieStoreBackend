@@ -1,12 +1,7 @@
 ﻿#nullable disable
 using MovieStoreBackend.Entities.System;
-using System;
-using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
 using System.ComponentModel.DataAnnotations.Schema;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace MovieStoreBackend.Entities
 {
@@ -25,9 +20,13 @@ namespace MovieStoreBackend.Entities
         [Required]
         public DateTime IssuedAt{ get; set; }
 
+
         // Relationships
+        public int CustomerId { get; set; }
+
         public List<SaleDetail> SalesDetails { get; set; }
 
+        [ForeignKey("CustomerId")]
         public Customer Customer { get; set; }
     }
 }

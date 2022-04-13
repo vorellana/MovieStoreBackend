@@ -1,23 +1,17 @@
 ﻿#nullable disable
 using Microsoft.EntityFrameworkCore;
-using MovieStoreBackend.DTO;
 using MovieStoreBackend.Entities;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace MovieStoreBackend.DataAccess.EFCore
 {
     public class MovieStoreDataContext: DbContext
     {
+
         public MovieStoreDataContext(DbContextOptions<MovieStoreDataContext> options)
             : base(options)
         {
         }
 
-        public DbSet<Student> Student { get; set; }
         public DbSet<MovieCategory> MovieCategory { get; set; }
         public DbSet<Customer> Customer { get; set; }
         public DbSet<DiskType> DiskType { get; set; }

@@ -1,5 +1,4 @@
-﻿#nullable disable
-using Microsoft.AspNetCore.Http;
+﻿using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 using MovieStoreBackend.DTO;
 using MovieStoreBackend.Entities;
@@ -9,22 +8,22 @@ namespace MovieStoreBackend.WebApiCore.Controllers
 {
     [Route("api/[controller]")]
     [ApiController]
-    public class MoviesController : ControllerBase
+    public class SalesController : ControllerBase
     {
-        protected readonly IMovieService movieService;
+        protected readonly ISaleService saleService;
 
-        public MoviesController(IMovieService movieService) { 
-            this.movieService = movieService;
+        public SalesController(ISaleService saleService) { 
+            this.saleService = saleService;
         }
 
-        // GET: api/Movies
+        // GET: api/Sales
         [HttpGet]
-        public async Task<ActionResult> GetAllMovies()
+        public async Task<ActionResult> GetAllSales()
         {
             Response oResponse = new Response();
             try
             {
-                oResponse.Data = await movieService.GetAllMovies();
+                oResponse.Data = await saleService.GetAllSales();
             }
             catch (Exception ex)
             {
@@ -34,15 +33,14 @@ namespace MovieStoreBackend.WebApiCore.Controllers
             return Ok(oResponse);
         }
 
-        // GET: api/Movies/byCustomers?diskStatus=&docType=
-        [HttpGet]
-        [Route("byCustomers")]
-        public async Task<ActionResult<IEnumerable<Movie>>> GetMoviesByCustomers(string diskStatus, string docType)
+        // POST: api/Sales
+        [HttpPost]
+        public async Task<ActionResult> CreateMovie(SaleDTO sale)
         {
-            var oResponse = new Response();
+            Response oResponse = new Response();
             try
             {
-                oResponse.Data = await movieService.GetListOfMoviesByCustomer(diskStatus, docType);
+                oResponse.Data = await saleService.InsertSale(sale);
             }
             catch (Exception ex)
             {
@@ -51,5 +49,7 @@ namespace MovieStoreBackend.WebApiCore.Controllers
             }
             return Ok(oResponse);
         }
+
     }
+
 }

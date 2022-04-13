@@ -1,12 +1,7 @@
 ﻿#nullable disable
 using MovieStoreBackend.Entities.System;
-using System;
-using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
 using System.ComponentModel.DataAnnotations.Schema;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace MovieStoreBackend.Entities
 {
@@ -26,10 +21,12 @@ namespace MovieStoreBackend.Entities
         [Column(TypeName = "varchar(100)")]
         public string Comment { get; set; }
 
-
         // Relationships
+        public int MovieId { get; set; }
+
         public List<SaleDetail> SalesDetails { get; set; }
 
+        [ForeignKey("MovieId")]
         public Movie Movie  { get; set; }
 
         public DiskType DiskType { get; set; }

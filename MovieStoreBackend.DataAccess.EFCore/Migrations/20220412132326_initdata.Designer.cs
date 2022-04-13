@@ -12,7 +12,7 @@ using MovieStoreBackend.DataAccess.EFCore;
 namespace MovieStoreBackend.DataAccess.EFCore.Migrations
 {
     [DbContext(typeof(MovieStoreDataContext))]
-    [Migration("20220407052106_initdata")]
+    [Migration("20220412132326_initdata")]
     partial class initdata
     {
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
@@ -238,18 +238,18 @@ namespace MovieStoreBackend.DataAccess.EFCore.Migrations
                         .HasColumnType("datetime2")
                         .HasDefaultValueSql("getdate()");
 
-                    b.Property<int?>("DiskId")
+                    b.Property<int>("DiskId")
                         .HasColumnType("int");
 
-                    b.Property<int?>("SaleId")
+                    b.Property<int>("SaleId")
                         .HasColumnType("int");
+
+                    b.Property<string>("Type")
+                        .IsRequired()
+                        .HasColumnType("varchar(20)");
 
                     b.Property<DateTime?>("UpdatedAt")
                         .HasColumnType("datetime2");
-
-                    b.Property<string>("type")
-                        .IsRequired()
-                        .HasColumnType("varchar(20)");
 
                     b.HasKey("Id");
 
@@ -322,11 +322,15 @@ namespace MovieStoreBackend.DataAccess.EFCore.Migrations
                 {
                     b.HasOne("MovieStoreBackend.Entities.Disk", "Disk")
                         .WithMany("SalesDetails")
-                        .HasForeignKey("DiskId");
+                        .HasForeignKey("DiskId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
 
                     b.HasOne("MovieStoreBackend.Entities.Sale", "Sale")
                         .WithMany("SalesDetails")
-                        .HasForeignKey("SaleId");
+                        .HasForeignKey("SaleId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
 
                     b.Navigation("Disk");
 

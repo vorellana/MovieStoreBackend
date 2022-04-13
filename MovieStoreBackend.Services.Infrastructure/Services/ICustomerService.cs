@@ -7,8 +7,8 @@ using System.Threading.Tasks;
 
 namespace MovieStoreBackend.Services.Infrastructure.Services
 {
-    public interface IStudentService
+    public interface ICustomerService
     {
-        Task<IEnumerable<Student>> GetAllStudents();
+        Task<IEnumerable<Customer>> GetAllCustomers();
     }
 }

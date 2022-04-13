@@ -6,7 +6,7 @@ using MovieStoreBackend.Services.Infrastructure.Repositories;
 using MovieStoreBackend.Services.Infrastructure.Services;
 
 var builder = WebApplication.CreateBuilder(args);
-string MyCors = "MyCors";
+var setupCors = "SetupCors";
 
 // Add services to the container.
 
@@ -18,23 +18,27 @@ builder.Services.AddControllers();
 builder.Services.AddEndpointsApiExplorer();
 builder.Services.AddSwaggerGen();
 builder.Services.AddCors(options => {
-    options.AddPolicy(name: MyCors, builder =>
+    options.AddPolicy(name: setupCors, builder =>
     {
         builder.WithOrigins("*");
     });
 });
 
 // Dependency injection
-builder.Services.AddTransient<IStudentRepository, StudentRepository>(); // vorellana
-builder.Services.AddScoped<IStudentService, StudentService>(); // vorellana
 
-builder.Services.AddTransient<IMovieRepository, MovieRepository>(); // vorellana
-builder.Services.AddScoped<IMovieService, MovieService>(); // vorellana
+builder.Services.AddTransient<IMovieRepository, MovieRepository>();
+builder.Services.AddScoped<IMovieService, MovieService>();
 
+builder.Services.AddTransient<ISaleRepository, SaleRepository>();
+builder.Services.AddScoped<ISaleService, SaleService>();
+
+builder.Services.AddTransient<ICustomerRepository, CustomerRepository>();
+builder.Services.AddScoped<ICustomerService, CustomerService>();
 
 var app = builder.Build();
 
 // Configure the HTTP request pipeline.
+
 if (app.Environment.IsDevelopment())
 {
     app.UseSwagger();
@@ -45,7 +49,7 @@ app.UseHttpsRedirection();
 
 app.UseAuthorization();
 
-app.UseCors(MyCors);
+app.UseCors(setupCors);
 
 app.MapControllers();
 

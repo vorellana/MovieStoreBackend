@@ -2,11 +2,6 @@
 using MovieStoreBackend.DTO;
 using MovieStoreBackend.Entities;
 using MovieStoreBackend.Services.Infrastructure.Repositories;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using MovieStoreBackend.DataAccess.EFCore.Utils;
 
 namespace MovieStoreBackend.DataAccess.EFCore.Repositories

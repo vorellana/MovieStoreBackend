@@ -153,10 +153,10 @@ namespace MovieStoreBackend.DataAccess.EFCore.Migrations
                 {
                     Id = table.Column<int>(type: "int", nullable: false)
                         .Annotation("SqlServer:Identity", "1, 1"),
-                    type = table.Column<string>(type: "varchar(20)", nullable: false),
+                    Type = table.Column<string>(type: "varchar(20)", nullable: false),
                     Amount = table.Column<decimal>(type: "decimal(8,2)", nullable: false),
-                    DiskId = table.Column<int>(type: "int", nullable: true),
-                    SaleId = table.Column<int>(type: "int", nullable: true),
+                    DiskId = table.Column<int>(type: "int", nullable: false),
+                    SaleId = table.Column<int>(type: "int", nullable: false),
                     CreatedAt = table.Column<DateTime>(type: "datetime2", nullable: false, defaultValueSql: "getdate()"),
                     UpdatedAt = table.Column<DateTime>(type: "datetime2", nullable: true)
                 },
@@ -167,12 +167,14 @@ namespace MovieStoreBackend.DataAccess.EFCore.Migrations
                         name: "FK_SaleDetail_Disk_DiskId",
                         column: x => x.DiskId,
                         principalTable: "Disk",
-                        principalColumn: "Id");
+                        principalColumn: "Id",
+                        onDelete: ReferentialAction.Cascade);
                     table.ForeignKey(
                         name: "FK_SaleDetail_Sale_SaleId",
                         column: x => x.SaleId,
                         principalTable: "Sale",
-                        principalColumn: "Id");
+                        principalColumn: "Id",
+                        onDelete: ReferentialAction.Cascade);
                 });
 
             migrationBuilder.CreateIndex(
