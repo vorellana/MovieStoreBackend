@@ -79,7 +79,7 @@ namespace MovieStoreBackend.DataAccess.EFCore.Migrations
                     b.Property<int?>("DiskTypeId")
                         .HasColumnType("int");
 
-                    b.Property<int?>("MovieId")
+                    b.Property<int>("MovieId")
                         .HasColumnType("int");
 
                     b.Property<string>("Status")
@@ -197,7 +197,7 @@ namespace MovieStoreBackend.DataAccess.EFCore.Migrations
                         .HasColumnType("datetime2")
                         .HasDefaultValueSql("getdate()");
 
-                    b.Property<int?>("CustomerId")
+                    b.Property<int>("CustomerId")
                         .HasColumnType("int");
 
                     b.Property<DateTime>("IssuedAt")
@@ -258,31 +258,6 @@ namespace MovieStoreBackend.DataAccess.EFCore.Migrations
                     b.ToTable("SaleDetail");
                 });
 
-            modelBuilder.Entity("MovieStoreBackend.Entities.Student", b =>
-                {
-                    b.Property<int>("Id")
-                        .ValueGeneratedOnAdd()
-                        .HasColumnType("int");
-
-                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("Id"), 1L, 1);
-
-                    b.Property<string>("Comment")
-                        .HasColumnType("nvarchar(max)");
-
-                    b.Property<string>("LastName")
-                        .HasColumnType("nvarchar(max)");
-
-                    b.Property<string>("Name")
-                        .HasColumnType("nvarchar(max)");
-
-                    b.Property<string>("Test")
-                        .HasColumnType("nvarchar(max)");
-
-                    b.HasKey("Id");
-
-                    b.ToTable("Student");
-                });
-
             modelBuilder.Entity("MovieStoreBackend.Entities.Disk", b =>
                 {
                     b.HasOne("MovieStoreBackend.Entities.DiskType", "DiskType")
@@ -291,7 +266,9 @@ namespace MovieStoreBackend.DataAccess.EFCore.Migrations
 
                     b.HasOne("MovieStoreBackend.Entities.Movie", "Movie")
                         .WithMany("Disks")
-                        .HasForeignKey("MovieId");
+                        .HasForeignKey("MovieId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
 
                     b.Navigation("DiskType");
 
@@ -311,7 +288,9 @@ namespace MovieStoreBackend.DataAccess.EFCore.Migrations
                 {
                     b.HasOne("MovieStoreBackend.Entities.Customer", "Customer")
                         .WithMany("Sales")
-                        .HasForeignKey("CustomerId");
+                        .HasForeignKey("CustomerId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
 
                     b.Navigation("Customer");
                 });

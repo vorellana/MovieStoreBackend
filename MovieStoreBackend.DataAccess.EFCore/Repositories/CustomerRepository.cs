@@ -14,13 +14,9 @@ namespace MovieStoreBackend.DataAccess.EFCore.Repositories
 
         public async Task<IEnumerable<Customer>> GetAllCustomers()
         {
-            try {
-                List<Customer> customers = new List<Customer>();
-                customers = await _dbContext.Customer.ToListAsync();
-                return customers;
-            } catch (Exception ex) {
-                return null;            
-            }
+            List<Customer> customers = new List<Customer>();
+            customers = await _dbContext.Customer.ToListAsync();
+            return customers;
         }
     }
 }

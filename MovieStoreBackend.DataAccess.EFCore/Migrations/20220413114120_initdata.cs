@@ -57,22 +57,6 @@ namespace MovieStoreBackend.DataAccess.EFCore.Migrations
                 });
 
             migrationBuilder.CreateTable(
-                name: "Student",
-                columns: table => new
-                {
-                    Id = table.Column<int>(type: "int", nullable: false)
-                        .Annotation("SqlServer:Identity", "1, 1"),
-                    Name = table.Column<string>(type: "nvarchar(max)", nullable: true),
-                    LastName = table.Column<string>(type: "nvarchar(max)", nullable: true),
-                    Comment = table.Column<string>(type: "nvarchar(max)", nullable: true),
-                    Test = table.Column<string>(type: "nvarchar(max)", nullable: true)
-                },
-                constraints: table =>
-                {
-                    table.PrimaryKey("PK_Student", x => x.Id);
-                });
-
-            migrationBuilder.CreateTable(
                 name: "Sale",
                 columns: table => new
                 {
@@ -81,7 +65,7 @@ namespace MovieStoreBackend.DataAccess.EFCore.Migrations
                     Type = table.Column<string>(type: "varchar(20)", nullable: false),
                     TotalAmount = table.Column<decimal>(type: "decimal(8,2)", nullable: false),
                     IssuedAt = table.Column<DateTime>(type: "datetime2", nullable: false),
-                    CustomerId = table.Column<int>(type: "int", nullable: true),
+                    CustomerId = table.Column<int>(type: "int", nullable: false),
                     CreatedAt = table.Column<DateTime>(type: "datetime2", nullable: false, defaultValueSql: "getdate()"),
                     UpdatedAt = table.Column<DateTime>(type: "datetime2", nullable: true)
                 },
@@ -92,7 +76,8 @@ namespace MovieStoreBackend.DataAccess.EFCore.Migrations
                         name: "FK_Sale_Customer_CustomerId",
                         column: x => x.CustomerId,
                         principalTable: "Customer",
-                        principalColumn: "Id");
+                        principalColumn: "Id",
+                        onDelete: ReferentialAction.Cascade);
                 });
 
             migrationBuilder.CreateTable(
@@ -127,7 +112,7 @@ namespace MovieStoreBackend.DataAccess.EFCore.Migrations
                     Code = table.Column<string>(type: "varchar(10)", nullable: false),
                     Status = table.Column<string>(type: "varchar(20)", nullable: false),
                     Comment = table.Column<string>(type: "varchar(100)", nullable: false),
-                    MovieId = table.Column<int>(type: "int", nullable: true),
+                    MovieId = table.Column<int>(type: "int", nullable: false),
                     DiskTypeId = table.Column<int>(type: "int", nullable: true),
                     CreatedAt = table.Column<DateTime>(type: "datetime2", nullable: false, defaultValueSql: "getdate()"),
                     UpdatedAt = table.Column<DateTime>(type: "datetime2", nullable: true)
@@ -144,7 +129,8 @@ namespace MovieStoreBackend.DataAccess.EFCore.Migrations
                         name: "FK_Disk_Movie_MovieId",
                         column: x => x.MovieId,
                         principalTable: "Movie",
-                        principalColumn: "Id");
+                        principalColumn: "Id",
+                        onDelete: ReferentialAction.Cascade);
                 });
 
             migrationBuilder.CreateTable(
@@ -212,9 +198,6 @@ namespace MovieStoreBackend.DataAccess.EFCore.Migrations
         {
             migrationBuilder.DropTable(
                 name: "SaleDetail");
-
-            migrationBuilder.DropTable(
-                name: "Student");
 
             migrationBuilder.DropTable(
                 name: "Disk");
