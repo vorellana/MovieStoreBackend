@@ -23,11 +23,11 @@
 ### Diagrama entidad-relación
 ![alt text](https://github.com/vorellana/MovieStoreBackend/blob/master/resources/backend-3.png?raw=true)
 ## 3. Estructura de carpetas y proyectos.
-* Proyecto Entities: Contiene el código de los módelos de Base de Datos.
-* Proyecto Web API: Contiene los controllers que se encargan de exponer los endpoints.
+* **Proyecto Entities:** Contiene el código de los módelos de Base de Datos.
+* **Proyecto Web API:** Contiene los controllers que se encargan de exponer los endpoints.
 ![alt text](https://github.com/vorellana/MovieStoreBackend/blob/master/resources/backend-4.png?raw=true)
-## 4. Tecnologías de desarrollo
 
+## 4. Tecnologías de desarrollo
 Para el presente proyecto se utilizarón las siguientes tecnologías como librerías, frameworks, servicios en la nube, herramientas de despliegue entre otros.
 ### Backend
 * **.NET 6:** Framework de desarrollo.
